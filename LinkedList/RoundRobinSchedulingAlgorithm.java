@@ -1,4 +1,5 @@
-package level_1;
+package LinkedList;
+
 class Process {
     int id, burstTime, priority, remainingTime;
     Process next;
@@ -10,8 +11,9 @@ class Process {
         this.priority = priority;
     }
 }
+
 public class RoundRobinSchedulingAlgorithm {
-	static Process head = null;
+    static Process head = null;
 
     public static void addProcess(int id, int burstTime, int priority) {
         Process newProcess = new Process(id, burstTime, priority);
@@ -20,14 +22,16 @@ public class RoundRobinSchedulingAlgorithm {
             head.next = head;
         } else {
             Process temp = head;
-            while (temp.next != head) temp = temp.next;
+            while (temp.next != head)
+                temp = temp.next;
             temp.next = newProcess;
             newProcess.next = head;
         }
     }
 
     public static void simulateRoundRobin(int quantum) {
-        if (head == null) return;
+        if (head == null)
+            return;
         Process curr = head;
         int time = 0, completed = 0, total = 0;
 
@@ -42,7 +46,8 @@ public class RoundRobinSchedulingAlgorithm {
                 int run = Math.min(quantum, curr.remainingTime);
                 curr.remainingTime -= run;
                 time += run;
-                System.out.println("Process " + curr.id + " ran for " + run + " units. Remaining: " + curr.remainingTime);
+                System.out
+                        .println("Process " + curr.id + " ran for " + run + " units. Remaining: " + curr.remainingTime);
                 if (curr.remainingTime == 0) {
                     completed++;
                     System.out.println("Process " + curr.id + " completed at time " + time);
@@ -53,13 +58,15 @@ public class RoundRobinSchedulingAlgorithm {
     }
 
     public static void displayQueue() {
-        if (head == null) return;
+        if (head == null)
+            return;
         Process temp = head;
         do {
             System.out.println("P" + temp.id + " (Burst: " + temp.burstTime + ", Priority: " + temp.priority + ")");
             temp = temp.next;
         } while (temp != head);
     }
+
     public static void main(String[] args) {
         addProcess(1, 10, 2);
         addProcess(2, 5, 1);

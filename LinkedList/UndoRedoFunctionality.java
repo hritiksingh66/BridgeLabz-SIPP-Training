@@ -1,5 +1,7 @@
-package level_1;
+package LinkedList;
+
 import java.util.*;
+
 class TextState {
     String content;
     TextState prev, next;
@@ -8,8 +10,9 @@ class TextState {
         this.content = content;
     }
 }
+
 public class UndoRedoFunctionality {
-	static TextState head = null;
+    static TextState head = null;
     static TextState current = null;
     static int maxHistory = 10;
     static int historySize = 0;
@@ -58,8 +61,9 @@ public class UndoRedoFunctionality {
             System.out.println("Editor is empty.");
         }
     }
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         String command;
 
         System.out.println("Text Editor Started. Type 'type <text>', 'undo', 'redo', 'show', or 'exit'.");
@@ -68,7 +72,8 @@ public class UndoRedoFunctionality {
             System.out.print("> ");
             command = sc.nextLine();
 
-            if (command.equals("exit")) break;
+            if (command.equals("exit"))
+                break;
             else if (command.startsWith("type ")) {
                 String content = command.substring(5);
                 type(content);
@@ -85,5 +90,5 @@ public class UndoRedoFunctionality {
 
         System.out.println("Text Editor Closed.");
         sc.close();
-	}
+    }
 }

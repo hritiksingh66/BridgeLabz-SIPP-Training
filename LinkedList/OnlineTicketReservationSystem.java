@@ -1,4 +1,5 @@
-package level_1;
+package LinkedList;
+
 class Ticket {
     String ticketId;
     String customerName;
@@ -15,10 +16,12 @@ class Ticket {
         this.bookingTime = bookingTime;
     }
 }
-public class OnlineTicketReservationSystem {
-	static Ticket head = null;
 
-    public static void addTicket(String ticketId, String customerName, String movieName, String seatNumber, String bookingTime) {
+public class OnlineTicketReservationSystem {
+    static Ticket head = null;
+
+    public static void addTicket(String ticketId, String customerName, String movieName, String seatNumber,
+            String bookingTime) {
         Ticket newTicket = new Ticket(ticketId, customerName, movieName, seatNumber, bookingTime);
         if (head == null) {
             head = newTicket;
@@ -34,15 +37,18 @@ public class OnlineTicketReservationSystem {
     }
 
     public static void removeTicket(String ticketId) {
-        if (head == null) return;
+        if (head == null)
+            return;
         Ticket curr = head, prev = null;
 
         do {
             if (curr.ticketId.equals(ticketId)) {
                 if (prev == null) { // head needs to be removed
                     Ticket last = head;
-                    while (last.next != head) last = last.next;
-                    if (head == head.next) head = null;
+                    while (last.next != head)
+                        last = last.next;
+                    if (head == head.next)
+                        head = null;
                     else {
                         head = head.next;
                         last.next = head;
@@ -75,7 +81,8 @@ public class OnlineTicketReservationSystem {
     }
 
     public static void searchTicket(String keyword) {
-        if (head == null) return;
+        if (head == null)
+            return;
         Ticket temp = head;
         boolean found = false;
         do {
@@ -85,7 +92,8 @@ public class OnlineTicketReservationSystem {
             }
             temp = temp.next;
         } while (temp != head);
-        if (!found) System.out.println("No matching ticket found.");
+        if (!found)
+            System.out.println("No matching ticket found.");
     }
 
     public static void totalTickets() {
@@ -101,7 +109,8 @@ public class OnlineTicketReservationSystem {
         } while (temp != head);
         System.out.println("Total Tickets: " + count);
     }
-	public static void main(String[] args) {
+
+    public static void main(String[] args) {
         addTicket("T001", "Alice", "Inception", "A1", "10:00AM");
         addTicket("T002", "Bob", "Inception", "A2", "10:00AM");
         addTicket("T003", "Charlie", "Oppenheimer", "B1", "12:00PM");
@@ -112,5 +121,5 @@ public class OnlineTicketReservationSystem {
         removeTicket("T002");
         displayTickets();
         totalTickets();
-	}
+    }
 }
