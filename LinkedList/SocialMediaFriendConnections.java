@@ -1,5 +1,7 @@
-package level_1;
+package LinkedList;
+
 import java.util.*;
+
 class User {
     int id;
     String name;
@@ -14,8 +16,9 @@ class User {
         this.friends = new ArrayList<>();
     }
 }
+
 public class SocialMediaFriendConnections {
-	static User head = null;
+    static User head = null;
 
     public static void addUser(int id, String name, int age) {
         User newUser = new User(id, name, age);
@@ -26,7 +29,8 @@ public class SocialMediaFriendConnections {
     public static User findUser(int id) {
         User temp = head;
         while (temp != null) {
-            if (temp.id == id) return temp;
+            if (temp.id == id)
+                return temp;
             temp = temp.next;
         }
         return null;
@@ -55,7 +59,8 @@ public class SocialMediaFriendConnections {
         if (u1 != null && u2 != null) {
             System.out.print("Mutual Friends: ");
             for (int fid : u1.friends) {
-                if (u2.friends.contains(fid)) System.out.print(fid + " ");
+                if (u2.friends.contains(fid))
+                    System.out.print(fid + " ");
             }
             System.out.println();
         }
@@ -85,8 +90,9 @@ public class SocialMediaFriendConnections {
             temp = temp.next;
         }
     }
-	public static void main(String[] args) {
-		addUser(1, "Alice", 22);
+
+    public static void main(String[] args) {
+        addUser(1, "Alice", 22);
         addUser(2, "Bob", 23);
         addUser(3, "Charlie", 24);
         addFriend(1, 2);
@@ -95,5 +101,5 @@ public class SocialMediaFriendConnections {
         mutualFriends(2, 3);
         searchUser("Charlie");
         friendCounts();
-	}
+    }
 }
